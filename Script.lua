@@ -61,9 +61,9 @@ getgenv().Ordium = {
             Customization = {
                 Circle = {
                     Visible = true,
-                    Filled = true,
-                    Transparency = 0.25,
-                    Radius = 100,
+                    Filled = false,
+                    Transparency = 1,
+                    Radius = 60,
                     Color = Color3.fromRGB(113, 139, 255)
                 },
                 Box = {
@@ -92,16 +92,16 @@ getgenv().Ordium = {
         Toggle = "C",
         Sticky = true,
         MouseHold = {
-            Enabled = true,
+            Enabled = false,
             Keybind = "MouseButton2" -- HOLD ONLY
         },
         Smoothing = {
-            X = 1,
-            Y = 1,
+            X = 0.062,
+            Y = 0.062
         },
         Sensitivity = {
-            X = 1,
-            Y = 1
+            X = 2,
+            Y = 2
         }, 
         Prediction = {
             Prediction = 0.141621,
@@ -111,24 +111,32 @@ getgenv().Ordium = {
             Y = 0.1193425,
         },
         Easing = {
-            Enabled = false,
+            Enabled = true,
             Cubic = {
+                Enabled = false,
                 Height = 3,
                 Speed = 1
             },
             Bounce = {
+                Enabled = false,
                 Height = 3,
                 Speed = 1,
                 Damping = 0.5
             },
             Linear = {
+                Enabled = false,
                 Height = 3,
                 Speed = 1,
                 Damping = 0.5
+            },
+            Elastic = {
+                Enabled = true,
+                Curve_Points = Vector2.new(0.62, 0.87),
+                Control_PointOffset = Vector3.new(0, 0, 0)
             }
         },
         HitParts = {
-            Favor = "Nearest Part", -- Nearest Point, Nearest Part, Or blank
+            Favor = "", -- Nearest Point, Nearest Part, Or blank
             Transformation = "Position", -- CFrame, Position
             HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
             Bones = { "Head", "HumanoidRootPart" },
@@ -137,13 +145,13 @@ getgenv().Ordium = {
             ]]
         },
         FOV = {
-            Disable_Outside = true,
+            Disable_Outside = false,
             Customization = {
                 Circle = {
                     Visible = true,
-                    Filled = true,
-                    Transparency = 0.25,
-                    Radius = 50,
+                    Filled = false,
+                    Transparency = 1,
+                    Radius = 70,
                     Color = Color3.fromRGB(113, 139, 255)
                 },
             }
