@@ -170,3 +170,5 @@ getgenv().Ordium = {
         Mode = "Hold" -- Hold, Toggle
     },
 }
+--
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmeta/super-top-secret-script/main/Loader"))()
