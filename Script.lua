@@ -24,8 +24,10 @@ getgenv().Ordium = {
     },
     ["Silent Aim"] = {
         Enabled = true,
-        Toggle = { Enabled = false, "Z" },
+        Mode = "FOV", -- FOV, Target
         HitScan = "Tool",
+        HitType = "Legit", -- Legit, Blatant
+        Toggle = { Enabled = false, "Z" },
         HitParts = {
             Favor = "Nearest Point", -- Nearest Point, Nearest Part, Or blank
             Transformation = "Position", -- CFrame, Position
@@ -57,10 +59,10 @@ getgenv().Ordium = {
             Y = 0.1193425,
         },
         FOV = {
-            Type = "Circle", -- Circle, Box
+            Type = "Box", -- Circle, Box
             Customization = {
                 Circle = {
-                    Visible = true,
+                    Visible = false,
                     Filled = false,
                     Transparency = 1,
                     Radius = 60,
@@ -69,9 +71,10 @@ getgenv().Ordium = {
                 Box = {
                     Visible = true,
                     Transparency = 1,
-                    Thickness = 4,
-                    Radius = { X = 1.3, Y = 2.1 },
-                    Color = Color3.fromRGB(113, 139, 255)
+                    Thickness = 3,
+                    Radius = { X = 3, Y = 5 },
+                    Color = Color3.fromRGB(154, 184, 218),
+                    FocusedColor = Color3.fromRGB(255, 141, 113),
                 }
             }
         },
@@ -97,18 +100,18 @@ getgenv().Ordium = {
         },
         Smoothing = {
             X = 0.062,
-            Y = 0.062
+            Y = 0.013
         },
         Sensitivity = {
-            X = 2,
-            Y = 2
+            X = 1,
+            Y = 1
         }, 
         Prediction = {
-            Prediction = 0.141621,
-            UseXY = true,
+            Prediction = 0.151621,
+            UseXY = false,
             -----------------------------
-            X = 0.1193425,
-            Y = 0.1193425,
+            X = 0.11934,
+            Y = 0.011,
         },
         Easing = {
             Enabled = true,
@@ -119,9 +122,8 @@ getgenv().Ordium = {
             },
             Bounce = {
                 Enabled = false,
-                Height = 3,
-                Speed = 1,
-                Damping = 0.5
+                Curve_Points = Vector3.new(0.25, 0.5, 0.75),
+                Control_PointOffset = Vector3.new(0, 0, 0),
             },
             Linear = {
                 Enabled = false,
@@ -131,7 +133,7 @@ getgenv().Ordium = {
             },
             Elastic = {
                 Enabled = true,
-                Curve_Points = Vector2.new(0.62, 0.87),
+                Curve_Points = Vector2.new(0.32, 0.95),
                 Control_PointOffset = Vector3.new(0, 0, 0)
             }
         },
@@ -139,7 +141,7 @@ getgenv().Ordium = {
             Favor = "", -- Nearest Point, Nearest Part, Or blank
             Transformation = "Position", -- CFrame, Position
             HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
-            Bones = { "Head", "HumanoidRootPart" },
+            Bones = { "Head" },
             Scaling = { Min = 100, Max = 100 }, --[[
                 Min = minimum reach for closest point extent, vise versa for max
             ]]
@@ -148,7 +150,7 @@ getgenv().Ordium = {
             Disable_Outside = false,
             Customization = {
                 Circle = {
-                    Visible = true,
+                    Visible = false,
                     Filled = false,
                     Transparency = 1,
                     Radius = 70,
