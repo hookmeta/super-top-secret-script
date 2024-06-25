@@ -6,7 +6,6 @@ getgenv().Ordium = {
         Script = {
             Intro = true,
             Hash = "?",
-            ForceResolver = false, -- doesn't effect prediction
         },
         Thread = {
             Aimbot = "OFlag.__FASTCALL",
