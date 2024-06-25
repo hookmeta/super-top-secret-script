@@ -25,13 +25,13 @@ getgenv().Ordium = {
         Enabled = true,
         Mode = "FOV", -- FOV, Target
         HitScan = "Tool",
-        HitType = "Legit", -- Legit, Blatant
+        HitType = "Blatant", -- Legit, Blatant
         Toggle = { Enabled = false, "Z" },
         HitParts = {
-            Favor = "Nearest Point", -- Nearest Point, Nearest Part, Or blank
+            Favor = "", -- Nearest Point, Nearest Part, Or blank
             Transformation = "Position", -- CFrame, Position
             HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
-            Bones = { "Head", "LowerTorso" },
+            Bones = { "HumanoidRootPart" },
             Scaling = { Min = 100, Max = 100 }, --[[
                 Min = minimum reach for closest point extent, vise versa for max
             ]]
@@ -71,7 +71,7 @@ getgenv().Ordium = {
                     Visible = true,
                     Transparency = 1,
                     Thickness = 3,
-                    Radius = { X = 3, Y = 5 },
+                    Radius = { X = 10, Y = 10 },
                     Color = Color3.fromRGB(154, 184, 218),
                     FocusedColor = Color3.fromRGB(255, 141, 113),
                 }
@@ -98,8 +98,8 @@ getgenv().Ordium = {
             Keybind = "MouseButton2" -- HOLD ONLY
         },
         Smoothing = {
-            X = 0.062,
-            Y = 0.013
+            X = 1,
+            Y = 1
         },
         Sensitivity = {
             X = 1,
@@ -109,8 +109,8 @@ getgenv().Ordium = {
             Prediction = 0.151621,
             UseXY = false,
             -----------------------------
-            X = 0.11934,
-            Y = 0.011,
+            X = 1,
+            Y = 1,
         },
         Easing = {
             Enabled = true,
@@ -140,7 +140,7 @@ getgenv().Ordium = {
             Favor = "", -- Nearest Point, Nearest Part, Or blank
             Transformation = "Position", -- CFrame, Position
             HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
-            Bones = { "Head" },
+            Bones = { "HumanoidRootPart" },
             Scaling = { Min = 100, Max = 100 }, --[[
                 Min = minimum reach for closest point extent, vise versa for max
             ]]
