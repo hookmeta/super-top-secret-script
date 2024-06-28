@@ -3,6 +3,9 @@ getgenv().Ordium = {
     ["GLOBAL_Intro"] = true,
     ["GLOBAL_Spoofer"] = true,
     ["GLOBAL_Resolver"] = true,
+    ["GLOBAL_ForceResolver"] = false,
+    ["GLOBAL_ForceOnKey"] = { false, "H" },
+    ["GLOBAL_ForceIndicator"] = { false, Color3.fromRGB(255, 255, 255) },
     ["GLOBAL_VelocityMode"] = "Roblox", --[[ Changing to "Custom" may help with velocity resolving ]]
     ["GLOBAL_Unload"] = false,
     ["GLOBAL_UnlockFPS"] = true,
@@ -83,9 +86,9 @@ getgenv().Ordium = {
     ["ASSIST_Keybind"] = "C",
     ["ASSIST_HoldMode"] = true,
     ["ASSIST_Sticky"] = true,
-    ["ASSIST_AimBone"] = {"UpperTorso"},
-    ["ASSIST_SmoothingX"] = 5,
-    ["ASSIST_SmoothingY"] = 5,
+    ["ASSIST_AimBone"] = {"HumanoidRootPart"},
+    ["ASSIST_SmoothingX"] = 15,
+    ["ASSIST_SmoothingY"] = 15,
     ["ASSIST_StickynessX"] = 1,
     ["ASSIST_StickynessY"] = 1,
     ["ASSIST_AntiGroundShots"] = true,
@@ -113,7 +116,7 @@ getgenv().Ordium = {
         ["180 - 190"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
         ["190 - 200"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
     },
-    ["ASSIST_Randomize"] = true,
+    ["ASSIST_Randomize"] = false,
     ["ASSIST_Randomization"] = { 23, 5, 16 }, --[[ X, Y, Z ]]--
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ["PINGSPIKE_Enabled"] = false,
@@ -129,7 +132,7 @@ getgenv().Ordium = {
     ["DESYNC_EnableOnLowHealth"] = { false, 100 },
     ["DESYNC_NotifyState"] = true,
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ["RAID_Enabled"] = true,
+    ["RAID_Enabled"] = false,
     ["RAID_Visuals"] = { ["Box"] = true, ["Names"] = true, ["Lines"] = true, ["List"] = false },
     ["RAID_HideVisuals"] = "Z",
     ["RAID_SelectPlayer"] = "G",
@@ -163,20 +166,23 @@ getgenv().Ordium = {
     ["AUTOBUY_MediumArmor"] = { true, 50 }, -- [[ Enabled, Distance ]]
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ["SILENT_FOVColor"] = Color3.fromRGB(188, 155, 182),
-    ["SILENT_FOVRadius"] = 150,
+    ["SILENT_FOVRadius"] = 180,
     ["SILENT_FOVFilled"] = true,
-    ["SILENT_FOVVisible"] = true,
+    ["SILENT_FOVVisible"] = false,
     ["SILENT_FOVDynamic"] = false,
     ["SILENT_FOVThickness"] = 1,
     ["SILENT_FOVTransparency"] = 0.3,
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ["SILENT_FOVBOXColor"] = Color3.fromRGB(191, 123, 255),
-    ["SILENT_FOVBOXWidth"] = 3,
-    ["SILENT_FOVBOXHeight"] = 5,
-    ["SILENT_FOVBOXVisible"] = false,
-    ["SILENT_FOVBOXThickness"] = 2,
-    ["SILENT_FOVBOXPrediction"] = false,
+    ["SILENT_FOVBOXColor"] = Color3.fromRGB(217, 210, 224),
+    ["SILENT_FOVBOXWidth"] = 1.3,
+    ["SILENT_FOVBOXHeight"] = 2,
+    ["SILENT_FOVBOXVisible"] = true,
+    ["SILENT_FOVBOXThickness"] = 3,
+    ["SILENT_FOVBOXPrediction"] = true,
     ["SILENT_FOVBOXTransparency"] = 1,
+    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
+    ["SILENT_TracerColor"] = Color3.fromRGB(217, 210, 224),
+    ["SILENT_TracerVisible"] = true,
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ["ASSIST_FOVColor"] = Color3.fromRGB(191, 123, 255),
     ["ASSIST_FOVRadius"] = 500,
