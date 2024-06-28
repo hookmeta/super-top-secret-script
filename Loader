@@ -1,4 +1,4 @@
-getgenv().script_key = getgenv().Ordium["Data"].Luarmor.Key;
+getgenv().script_key = getgenv().Script["GLOBAL_Key"];
 --[[
     This script has been licensed using Luarmor
       Luarmor v3.8b, Lua whitelisting system
