@@ -1,4 +1,4 @@
-getgenv().Script = {
+getgenv().Ordium = {
     ["GLOBAL_Key"] = "",
     ["GLOBAL_Intro"] = true,
     ["GLOBAL_Spoofer"] = true,
@@ -10,13 +10,6 @@ getgenv().Script = {
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ["FRAMEWORK_Threading"] = {["Main Threads"] = "Heartbeat", ["Other Threads"] = "RenderStepped"}, --[[ https://create.roblox.com/docs/reference/engine/classes/RunService ]]
     ["FRAMEWORK_EnableSwapChain"] = false,
-    ["FRAMEWORK_SwapChainKeybind"] = "T",
-    ["FRAMEWORK_ThreadSwapChain"] = {["Main Threads"] = "Heartbeat", ["Other Threads"] = "Heartbeat"},   --[[ https://create.roblox.com/docs/reference/engine/classes/RunService ]]
-    --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ["LUAS_SafeMode"] = false,
-    ["LUAS_AllowOutput"] = true,
-    ["LUAS_LimitHTTPRequests"] = { true, 5 },
-    ["LUAS_AllowScriptExecution"] = true,
     --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     ["UNIVERSAL_DeathMatchMode"] = true,
     ["UNIVERSAL_CursorOffset"] = false,
