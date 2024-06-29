@@ -60,7 +60,7 @@ getgenv().Ordium = {
         ['Visualize Target'] = { false, ['Color'] = Color3.fromRGB(255, 0, 0),['Size'] = Vector2.new(10, 10) },
         ['HitParts'] = {
             ['Hit Type'] = "Nearest Point", -- Nearest Point, Nearest Part, Blank for hitbones
-            ['Nearest Point Type'] = "Scalar", -- Scalar, Generic, Absolute, Partial
+            ['Nearest Point Type'] = "Absolute", -- Scalar, Generic, Absolute, Partial
             ['HitBones'] = {"Head"},
             ['Scaling'] = {
                 ['Min'] = 2.5,
