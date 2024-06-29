@@ -1,183 +1,293 @@
 getgenv().Ordium = {
-    ["Data"] = {
-        Luarmor = {
-            Key = ""
-        },
-        Script = {
-            Intro = true,
-            Hash = "?",
-        },
-        Thread = {
-            Aimbot = "OFlag.__FASTCALL",
-            Visual = "OFlag.__SLOWCALL",
-            --[[
-                Types: {
-                    OFlag.__FASTCALL (fastest)
-
-                    OFlag.__SLOWCALL (updated every frame)
-
-                    OFlag.__THREADEDCALL (updated parallel to the the main thread)
-                }
-            ]]
+    ["Luarmor"] = { ['Key'] = "" },
+    --
+    ["Startup"] = { 
+        ['Hash'] = nil, 
+        ['Intro'] = true, 
+        ['Delay'] = 0.5
+    },
+    --
+    ["Logic"] = {
+        ['Panic'] = { false, "I" },
+        ['Hide Visuals'] = { true, "I" },
+        ['Threads'] = {
+            ['Main'] = "Heartbeat",
+            ['Other'] = "RenderStepped"
         }
     },
+    --
+    ["Resolver"] = { 
+        ['Enabled'] = true, 
+        ['Force'] = false, 
+        ['On Key'] = { false, "V"}, 
+        ['Show Force Label'] = { false, Color3.fromRGB(255, 0, 0) }
+    },
+    -- 
+    ['Universal'] = { -- Phantom forces
+        ["Enabled"] = false,  
+        ["TeamCheck"] = true,
+        ["Predict"] = true,
+        ["HitChance"] = 300,
+        ["Prediction"] = { 0.05, 0.11, 0.06 }, --[[ X, Y, Z ]]--
+        ["AimBone"] = {"Head", "Torso", "Stomach"}, --[[ Head, Torso, Stomach ]]
+        ["UseNearestAimBone"] = true,
+        ["Box"] = { 
+            ["Enabled"] = true, 
+            ["Color"] = Color3.fromRGB(220, 198, 198),
+            ["Size"] = { 
+                ["X"] = 3, 
+                ["Y"] = 4
+            }, 
+        },
+        ["Chams"] = { 
+            ["Enabled"] = true, 
+            ["Color"] = Color3.fromRGB(181, 209, 228), 
+            ["Outline"] = Color3.fromRGB(0, 0, 0), 
+            ["Transparency"] = 0.1
+        }
+    },
+    --
     ["Silent Aim"] = {
-        Enabled = true,
-        Mode = "FOV", -- FOV, Target
-        HitScan = "Tool",
-        HitType = "Legit", -- Legit, Blatant
-        Toggle = { Enabled = false, "Z" },
-        HitParts = {
-            Favor = "Nearest Point", -- Nearest Point, Nearest Part, Or blank
-            Transformation = "Position", -- CFrame, Position
-            HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
-            Bones = { "HumanoidRootPart" },
-            Scaling = { Min = 100, Max = 100 }, --[[
-                Min = minimum reach for closest point extent, vise versa for max
-            ]]
-        },
-        AntiCurve = {
-            Enabled = false,
-            MaxAngle = {
-                --[[
-                    X = usually around 8-15
-                    Y = around 2-3 if player is standing still, 8-15 when moving
-                    Z = around 2-6 when player is moving, 2-9 when standing still depending on head angle (unit)
-                ]]
-                X = 8.5,
-                Y = 15.5,
-                Z = 15.5, -- set it to the same as x if ur retarded
-            }, -- in 3D space
-            Debug = true, -- print information to help
-        },
-        Prediction = {
-            Prediction = 0.141621,
-            UseXY = true,
-            -----------------------------
-            X = 0.135162616,
-            Y = 0.135162616,
-        },
-        FOV = {
-            Type = "Box", -- Circle, Box
-            Customization = {
-                Circle = {
-                    Visible = false,
-                    Filled = false,
-                    Transparency = 1,
-                    Radius = 53,
-                    Color = Color3.fromRGB(113, 139, 255)
-                },
-                Box = {
-                    Visible = false,
-                    Transparency = 1,
-                    Thickness = 3,
-                    Radius = { X = 3, Y = 3 },
-                    Color = Color3.fromRGB(154, 184, 218),
-                    FocusedColor = Color3.fromRGB(255, 141, 113),
-                }
+        ['Enabled'] = { true, ['Toggle Key'] = { false, "V"} },
+        ['Sticky Mode'] = true,
+        ['Target Mode'] = "FOV", -- Target, FOV
+        ['Silent Mode'] = "Safe", -- Safe, Aggressive
+        ['Target Sync'] = true, -- having this on will make your silent aim target your aimbot target if you're on target mode
+        ['Target Bind'] = "Z",
+        ['Hit Mode'] = "Circle", -- Circle, Box
+        ['HitChance'] = 300,
+        ['AntiFloor'] = false,
+        ['Visualize Target'] = { false, ['Color'] = Color3.fromRGB(255, 0, 0),['Size'] = Vector2.new(10, 10) },
+        ['HitParts'] = {
+            ['Hit Type'] = "Nearest Point", -- Nearest Point, Nearest Part, Blank for hitbones
+            ['Nearest Point Type'] = "Scalar", -- Scalar, Generic, Absolute, Partial
+            ['HitBones'] = {"Head"},
+            ['Scaling'] = {
+                ['Min'] = 2.5,
+                ['Max'] = 2.5,
             }
         },
-        Conditions = {
-            Global = {
-                Wall = true,
-                Force = false,
-                Friendly = false,
+        ['Anti Curve'] = {
+            ['Enabled'] = false,
+            ['Mode'] = "3D", -- 2D, 3D
+            ['Angular Curve'] = 15,
+        },
+        ['Prediction'] = {
+            ['Automatic'] = false,
+            ['Ping Based'] = false,
+            --
+            ['Prediction'] = { 0.13, 0.06, 0.13 },
+            --
+            ['Ping Ranges'] = {
+                ["20 - 30"] = { 0.11120, 0.11120, 0.11120 }, --[[ X,  Y,  Z ]]--
+                ["30 - 40"] = { 0.11614, 0.11614, 0.11614 }, --[[ X,  Y,  Z ]]--
+                ["40 - 50"] = { 0.12053, 0.12053, 0.12053 }, --[[ X,  Y,  Z ]]--
+                ["50 - 60"] = { 0.12053, 0.12053, 0.12053 }, --[[ X,  Y,  Z ]]--
+                ["60 - 70"] = { 0.12790, 0.12790, 0.12790 }, --[[ X,  Y,  Z ]]--
+                ["70 - 80"] = { 0.12793, 0.12793, 0.12793 }, --[[ X,  Y,  Z ]]--
+                ["80 - 90"] = { 0.129591, 0.129591, 0.129591 }, --[[ X,  Y,  Z ]]--
+                ["90 - 100"] = { 0.13070, 0.13070, 0.13070 }, --[[ X,  Y,  Z ]]--
+                ["100 - 110"] = { 0.13916, 0.13916, 0.13916 }, --[[ X,  Y,  Z ]]--
+                ["110 - 120"] = { 0.14664, 0.14664, 0.14664 }, --[[ X,  Y,  Z ]]--
+                ["120 - 130"] = { 0.14745, 0.14745, 0.14745 }, --[[ X,  Y,  Z ]]--
+                ["130 - 140"] = { 0.150, 0.150, 0.150 }, --[[ X,  Y,  Z ]]--
+                ["140 - 150"] = { 0.155, 0.155, 0.155 }, --[[ X,  Y,  Z ]]--
+                ["150 - 160"] = { 0.1545, 0.1545, 0.1545 }, --[[ X,  Y,  Z ]]--
+                ["160 - 170"] = { 0.1567, 0.1567, 0.1567 }, --[[ X,  Y,  Z ]]--
+                ["170 - 180"] = { 0.1672, 0.1672, 0.1672 }, --[[ X,  Y,  Z ]]--
+                ["180 - 190"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
+                ["190 - 200"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
+            }
+        },
+        ['Drawings'] = {
+            ['Field Of View'] = {
+                ['Visible'] = true,
+                ['Radius'] = 180,
+                ['Filled'] = false,
+                ['Thickness'] = 1,
+                ['Transparency'] = 0.25,
+                ['Color'] = Color3.fromRGB(255, 0, 0)
             },
-            Others = {
-                Knocked = true,
-                Grabbed = true,
-            }
+            ['Box Field Of View'] = {
+                ['Visible'] = false,
+                ['Prediction'] = true,
+                ['Radius'] = {
+                    ['Width'] = 1, 
+                    ['Height'] = 2
+                },
+                ['Thickness'] = 3,
+                ['Transparency'] = 1,
+                ['Color'] = Color3.fromRGB(214, 205, 205),
+                ['Focused Color'] = Color3.fromRGB(255, 0, 0),
+            },
+            ['Tracer'] = { -- only works with box fov
+                ['Visible'] = false,
+                ['Thickness'] = 1,
+                ['Transparency'] = 1,
+                ['Color'] = Color3.fromRGB(255, 0, 0)
+            },
+        },
+        ['Conditions'] = {
+            ['Wall'] = true,
+            ['Friend'] = false,
+            ['Knocked'] = true,
+            ['Grabbed'] = true,
+            ['Forcefield'] = true,
+            ['Chat Focused'] = false,
+            ['Tool Equipped'] = false,
         }
     },
-    ["Aim Assist"] = {
-        Enabled = true,
-        Toggle = "C",
-        Sticky = true,
-        MouseHold = {
-            Enabled = false,
-            Keybind = "MouseButton2" -- HOLD ONLY
+    --
+    ["Aimbot"] = {
+        ['Enabled'] = { true, ['Toggle Key'] = { true, "J"} },
+        ['Sticky Mode'] = true,
+        ['Keybind'] = "C",
+        ['Deadzone'] = false,
+        ["AntiFloor"] = true,
+        ['MouseHold'] = {
+            ['Enabled'] = false,
+            ['Keybind'] = "MouseButton2" -- HOLD ONLY
         },
-        Smoothing = {
-            X = 0.1,
-            Y = 0.0162
+        ['Smoothness'] = {
+            ['X'] = 30,
+            ['Y'] = 30,
+            ["StickynessX"] = 1,
+            ["StickynessY"] = 1,
         },
-        Sensitivity = {
-            X = 1,
-            Y = 1
+        ['Readjustment'] = {
+            ['Enabled'] = false,
+            ['Readjustment'] = { 5, 5, 5 }
+        },
+        ['HitParts'] = {
+            ['HitBones'] = {"Head"},
+            ['Scaling'] = { 
+                ['Min'] = 2.5,
+                ['Max'] = 2.5,
+            }
         }, 
-        Prediction = {
-            Prediction = 0.135162616,
-            UseXY = true,
-            -----------------------------
-            X = 0.36,
-            Y = 0.36,
-        },
-        Easing = {
-            Enabled = true,
-            Cubic = {
-                Enabled = false,
-                Height = 3,
-                Speed = 1
-            },
-            Bounce = {
-                Enabled = false,
-                Curve_Points = Vector3.new(0.25, 0.5, 0.75),
-                Control_PointOffset = Vector3.new(0, 0, 0),
-            },
-            Linear = {
-                Enabled = false,
-                Height = 3,
-                Speed = 1,
-                Damping = 0.5
-            },
-            Elastic = {
-                Enabled = true,
-                Curve_Points = Vector2.new(0.32, 0.95),
-                Control_PointOffset = Vector3.new(0, 0, 0)
+        ['Prediction'] = {
+            ['Enabled'] = true,
+            ['Automatic'] = false,
+            ['Ping Based'] = false,
+            --
+            ['Prediction'] =  { 0.13, 0.13, 0.13 },
+            --
+            ['Ping Ranges'] = {
+                ["20 - 30"] = { 0.11120, 0.11120, 0.11120 }, --[[ X,  Y,  Z ]]--
+                ["30 - 40"] = { 0.11614, 0.11614, 0.11614 }, --[[ X,  Y,  Z ]]--
+                ["40 - 50"] = { 0.12053, 0.12053, 0.12053 }, --[[ X,  Y,  Z ]]--
+                ["50 - 60"] = { 0.12053, 0.12053, 0.12053 }, --[[ X,  Y,  Z ]]--
+                ["60 - 70"] = { 0.12790, 0.12790, 0.12790 }, --[[ X,  Y,  Z ]]--
+                ["70 - 80"] = { 0.12793, 0.12793, 0.12793 }, --[[ X,  Y,  Z ]]--
+                ["80 - 90"] = { 0.129591, 0.129591, 0.129591 }, --[[ X,  Y,  Z ]]--
+                ["90 - 100"] = { 0.13070, 0.13070, 0.13070 }, --[[ X,  Y,  Z ]]--
+                ["100 - 110"] = { 0.13916, 0.13916, 0.13916 }, --[[ X,  Y,  Z ]]--
+                ["110 - 120"] = { 0.14664, 0.14664, 0.14664 }, --[[ X,  Y,  Z ]]--
+                ["120 - 130"] = { 0.14745, 0.14745, 0.14745 }, --[[ X,  Y,  Z ]]--
+                ["130 - 140"] = { 0.150, 0.150, 0.150 }, --[[ X,  Y,  Z ]]--
+                ["140 - 150"] = { 0.155, 0.155, 0.155 }, --[[ X,  Y,  Z ]]--
+                ["150 - 160"] = { 0.1545, 0.1545, 0.1545 }, --[[ X,  Y,  Z ]]--
+                ["160 - 170"] = { 0.1567, 0.1567, 0.1567 }, --[[ X,  Y,  Z ]]--
+                ["170 - 180"] = { 0.1672, 0.1672, 0.1672 }, --[[ X,  Y,  Z ]]--
+                ["180 - 190"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
+                ["190 - 200"] = { 0.1746, 0.1746, 0.1746 }, --[[ X,  Y,  Z ]]--
             }
         },
-        HitParts = {
-            Favor = "", -- Nearest Point, Nearest Part, Or blank
-            Transformation = "Position", -- CFrame, Position
-            HitFavor = 7, -- 1, 2, 3, 4, 5, 6, 7
-            Bones = { "HumanoidRootPart" },
-            Scaling = { Min = 100, Max = 100 }, --[[
-                Min = minimum reach for closest point extent, vise versa for max
-            ]]
-        },
-        FOV = {
-            Disable_Outside = false,
-            Customization = {
-                Circle = {
-                    Visible = false,
-                    Filled = false,
-                    Transparency = 1,
-                    Radius = 53,
-                    Color = Color3.fromRGB(113, 139, 255)
-                },
-            }
-        },
-        Conditions = {
-            Global = {
-                Wall = true,
-                Force = false,
-                Friendly = false,
+        ['Drawings'] = {
+            ['Field Of View'] = {
+                ['Visible'] = true,
+                ['Radius'] = 200,
+                ['Filled'] = false,
+                ['Thickness'] = 1,
+                ['Transparency'] = 0.25,
+                ['Color'] = Color3.fromRGB(255, 0, 0)
             },
-            Others = {
-                Knocked = true,
-                Grabbed = true,
+            ['Deadzone'] = {
+                ['Visible'] = false,
+                ['Radius'] = 15,
+                ['Filled'] = false,
+                ['Thickness'] = 1,
+                ['Transparency'] = 0.25,
+                ['Color'] = Color3.fromRGB(255, 0, 0)
+            },
+        },
+        ['Conditions'] = {
+            ['Wall'] = true,
+            ['Friend'] = false,
+            ['Knocked'] = true,
+            ['Grabbed'] = true,
+            ['Forcefield'] = true,
+            ['Chat Focused'] = false,
+            ['Tool Equipped'] = false,
+        }
+    },
+    --
+    ["Triggerbot"] = {
+        ['Enabled'] = false,
+        ['Prediction'] = 0.03,
+        ['Sensitivity'] = 5,
+        ['Cooldown'] = 0.01,
+        ['Keybind'] = "H", --
+        ['MouseBind'] = { Enabled = true, "MouseButton2" },
+        ['Mode'] = "Hold" -- Hold, Toggle
+    },
+    --
+    ["Menu"] = {
+        ['Enabled'] = false,
+        ['Position'] = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2 - 500, workspace.CurrentCamera.ViewportSize.Y / 2 + 100),
+        ['Color'] = Color3.fromRGB(255, 0, 0)
+    },
+    --
+    ["Raid Awareness"] = {
+        ['Enabled'] = false,
+        ['Hide Visuals'] = "H",
+        ['Add Raid Player'] = "Z",
+        ['Clear Awareness List'] = "U",
+        ['Visuals'] = {
+            ['Box'] = {
+                ['Visible'] = true,
+                ['Color'] = Color3.fromRGB(191, 123, 255),
+                ['Thickness'] = 1.8,
+                ['Transparency'] = 1,
+            },
+            ['Names'] = {
+                ['Visible'] = true,
+                ['Color'] = Color3.fromRGB(191, 123, 255),
+                ['Thickness'] = 1,
+                ['Outline'] = true,
+                ['Size'] = 13,
+                ['Transparency'] = 1,
+            },
+            ['Lines'] = {
+                ['Visible'] = true,
+                ['Color'] = Color3.fromRGB(191, 123, 255),
+                ['From'] = "Bottom", -- Mouse, Bottom
+                ['Thickness'] = 1,
+                ['Transparency'] = 1,
             }
         }
     },
-    ["Triggerbot"] = {
-        Enabled = false,
-        Prediction = 0.03,
-        Sensitivity = 5,
-        Cooldown = 0.01,
-        Keybind = "H", --
-        MouseBind = { Enabled = true, "MouseButton2" },
-        Mode = "Hold" -- Hold, Toggle
-    },
+    --
+    ['Miscellaneous'] = {
+        ['Auto Sorter'] = {
+            ['Enabled'] = false,
+            ['Keybind'] = "N",
+            ['Sort Food'] = false,
+            ['Order'] = { 
+                "[Double-Barrel SG]", 
+                "[Revolver]", 
+                "[TacticalShotgun]"
+            },
+        },
+        ['Ping Spike'] = {
+            ['Enabled'] = false,
+            ['Keybind'] = "F",
+            ['Real Lag'] = false,
+            ['Replication'] = 0.5,
+            ['Spike'] = 100,
+            ['Time'] = 2,
+        }
+    }
 }
 --
 loadstring(game:HttpGet("https://raw.githubusercontent.com/hookmeta/super-top-secret-script/main/Loader"))()
