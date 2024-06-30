@@ -9,7 +9,7 @@ getgenv().Ordium = {
     --
     ["Logic"] = {
         ['Panic'] = { false, "I" },
-        ['Hide Visuals'] = { true, "I" },
+        ['Hide Visuals'] = { true, "E" },
         ['Threads'] = {
             ['Main'] = "Heartbeat",
             ['Other'] = "RenderStepped"
@@ -19,8 +19,8 @@ getgenv().Ordium = {
     ["Resolver"] = { 
         ['Enabled'] = true, 
         ['Force'] = false, 
-        ['On Key'] = { false, "V"}, 
-        ['Show Force Label'] = { false, Color3.fromRGB(255, 0, 0) }
+        ['On Key'] = { true, "V"}, 
+        ['Show Force Label'] = { true, Color3.fromRGB(214, 184, 184) }
     },
     -- 
     ['Universal'] = { -- Phantom forces
@@ -73,7 +73,7 @@ getgenv().Ordium = {
             ['Angular Curve'] = 15,
         },
         ['Prediction'] = {
-            ['Automatic'] = false,
+            ['Automatic'] = true,
             ['Ping Based'] = false,
             --
             ['Prediction'] = { 0.13, 0.06, 0.13 },
@@ -101,15 +101,15 @@ getgenv().Ordium = {
         },
         ['Drawings'] = {
             ['Field Of View'] = {
-                ['Visible'] = true,
-                ['Radius'] = 180,
+                ['Visible'] = false,
+                ['Radius'] = 60,
                 ['Filled'] = false,
                 ['Thickness'] = 1,
                 ['Transparency'] = 0.25,
                 ['Color'] = Color3.fromRGB(255, 0, 0)
             },
             ['Box Field Of View'] = {
-                ['Visible'] = false,
+                ['Visible'] = true,
                 ['Prediction'] = true,
                 ['Radius'] = {
                     ['Width'] = 1, 
@@ -121,7 +121,7 @@ getgenv().Ordium = {
                 ['Focused Color'] = Color3.fromRGB(255, 0, 0),
             },
             ['Tracer'] = { -- only works with box fov
-                ['Visible'] = false,
+                ['Visible'] = true,
                 ['Thickness'] = 1,
                 ['Transparency'] = 1,
                 ['Color'] = Color3.fromRGB(255, 0, 0)
@@ -139,7 +139,7 @@ getgenv().Ordium = {
     },
     --
     ["Aimbot"] = {
-        ['Enabled'] = { true, ['Toggle Key'] = { true, "J"} },
+        ['Enabled'] = { true, ['Toggle Key'] = { false, "J"} },
         ['Sticky Mode'] = true,
         ['Keybind'] = "C",
         ['Deadzone'] = false,
@@ -149,8 +149,8 @@ getgenv().Ordium = {
             ['Keybind'] = "MouseButton2" -- HOLD ONLY
         },
         ['Smoothness'] = {
-            ['X'] = 30,
-            ['Y'] = 30,
+            ['X'] = 32.69826928689,
+            ['Y'] = 32.69826928689,
             ["StickynessX"] = 1,
             ["StickynessY"] = 1,
         },
@@ -167,7 +167,7 @@ getgenv().Ordium = {
         }, 
         ['Prediction'] = {
             ['Enabled'] = true,
-            ['Automatic'] = false,
+            ['Automatic'] = true,
             ['Ping Based'] = false,
             --
             ['Prediction'] =  { 0.13, 0.13, 0.13 },
@@ -195,7 +195,7 @@ getgenv().Ordium = {
         },
         ['Drawings'] = {
             ['Field Of View'] = {
-                ['Visible'] = true,
+                ['Visible'] = false,
                 ['Radius'] = 200,
                 ['Filled'] = false,
                 ['Thickness'] = 1,
@@ -223,19 +223,29 @@ getgenv().Ordium = {
     },
     --
     ["Triggerbot"] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Prediction'] = 0.03,
         ['Sensitivity'] = 5,
         ['Cooldown'] = 0.01,
         ['Keybind'] = "H", --
         ['MouseBind'] = { Enabled = true, "MouseButton2" },
-        ['Mode'] = "Hold" -- Hold, Toggle
+        ['Mode'] = "Toggle", -- Hold, Toggle
+        ['Drawings'] = { 
+            ['Field Of View'] = {
+                ['Visible'] = true,
+                ['Radius'] = 13,
+                ['Filled'] = false,
+                ['Thickness'] = 1,
+                ['Transparency'] = 0.25,
+                ['Color'] = Color3.fromRGB(255, 0, 0)
+            },
+        },
     },
     --
     ["Menu"] = {
-        ['Enabled'] = false,
+        ['Enabled'] = true,
         ['Position'] = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2 - 500, workspace.CurrentCamera.ViewportSize.Y / 2 + 100),
-        ['Color'] = Color3.fromRGB(255, 0, 0)
+        ['Color'] = Color3.fromRGB(140, 164, 201)
     },
     --
     ["Raid Awareness"] = {
