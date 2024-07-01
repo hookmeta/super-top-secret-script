@@ -223,7 +223,7 @@ getgenv().Ordium = {
     },
     --
     ["Triggerbot"] = {
-        ['Enabled'] = true,
+        ['Enabled'] = true, -- only works with silent target
         ['Prediction'] = 0.03,
         ['Sensitivity'] = 5,
         ['Cooldown'] = 0.01,
